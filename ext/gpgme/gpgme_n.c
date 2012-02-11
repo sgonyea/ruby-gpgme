@@ -138,34 +138,6 @@ rb_s_gpgme_check_version (VALUE dummy, VALUE vreq)
 }
 
 static VALUE
-rb_s_gpgme_get_engine_info (VALUE dummy, VALUE rinfo)
-{
-  gpgme_engine_info_t info;
-  gpgme_error_t err;
-  long idx;
-
-  err = gpgme_get_engine_info (&info);
-  if (gpgme_err_code(err) == GPG_ERR_NO_ERROR)
-    {
-      for (idx = 0; info; info = info->next, idx++)
-	{
-	  VALUE vinfo = rb_class_new_instance (0, NULL, cEngineInfo);
-	  rb_iv_set (vinfo, "@protocol", INT2FIX(info->protocol));
-	  if (info->file_name)
-	    rb_iv_set (vinfo, "@file_name", rb_str_new2 (info->file_name));
-	  if (info->version)
-	    rb_iv_set (vinfo, "@version", rb_str_new2 (info->version));
-	  if (info->req_version)
-	    rb_iv_set (vinfo, "@req_version", rb_str_new2 (info->req_version));
-	  if (info->home_dir)
-	    rb_iv_set (vinfo, "@home_dir", rb_str_new2 (info->home_dir));
-	  rb_ary_store (rinfo, idx, vinfo);
-	}
-    }
-  return LONG2NUM(err);
-}
-
-static VALUE
 rb_s_gpgme_set_engine_info (VALUE dummy, VALUE vproto, VALUE vfile_name,
 			    VALUE vhome_dir)
 {
@@ -1926,7 +1898,6 @@ Init_gpgme_n (void)
   mGPGME = rb_define_module ("GPGME");
 
   rb_define_module_function (mGPGME, "gpgme_check_version_x",       rb_s_gpgme_check_version, 1);
-  rb_define_module_function (mGPGME, "gpgme_get_engine_info",       rb_s_gpgme_get_engine_info, 1);
   rb_define_module_function (mGPGME, "gpgme_set_engine_info",       rb_s_gpgme_set_engine_info, 3);
 
   rb_define_module_function (mGPGME, "gpgme_pubkey_algo_name",      rb_s_gpgme_pubkey_algo_name, 1);
