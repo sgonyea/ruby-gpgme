@@ -1,5 +1,6 @@
 $:.push File.expand_path("../..", __FILE__) # C extension is in the root
 
+require 'gpgme/ffi'
 require 'gpgme_n'
 
 # TODO without this call one can't GPGME::Ctx.new, find out why

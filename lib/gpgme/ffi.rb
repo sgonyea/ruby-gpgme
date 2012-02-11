@@ -1,3 +1,4 @@
+require 'ffi' unless defined?(FFI)
 require 'gpgme/ffi/constants'
 
 module GPGME
