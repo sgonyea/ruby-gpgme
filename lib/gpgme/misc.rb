@@ -1,8 +1,8 @@
 module GPGME
   class EngineInfo
-    private_class_method :new
+    # private_class_method :new
 
-    attr_reader :protocol, :file_name, :version, :req_version, :home_dir
+    attr_accessor :protocol, :file_name, :version, :req_version, :home_dir
     alias required_version req_version
   end
 
