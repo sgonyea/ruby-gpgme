@@ -1931,240 +1931,141 @@ Init_gpgme_n (void)
 
   mGPGME = rb_define_module ("GPGME");
 
-  rb_define_module_function (mGPGME, "gpgme_check_version",
-			     rb_s_gpgme_check_version, 1);
-  rb_define_module_function (mGPGME, "gpgme_engine_check_version",
-			     rb_s_gpgme_engine_check_version, 1);
-  rb_define_module_function (mGPGME, "gpgme_get_engine_info",
-			     rb_s_gpgme_get_engine_info, 1);
-  rb_define_module_function (mGPGME, "gpgme_set_engine_info",
-			     rb_s_gpgme_set_engine_info, 3);
+  rb_define_module_function (mGPGME, "gpgme_check_version",         rb_s_gpgme_check_version, 1);
+  rb_define_module_function (mGPGME, "gpgme_engine_check_version",  rb_s_gpgme_engine_check_version, 1);
+  rb_define_module_function (mGPGME, "gpgme_get_engine_info",       rb_s_gpgme_get_engine_info, 1);
+  rb_define_module_function (mGPGME, "gpgme_set_engine_info",       rb_s_gpgme_set_engine_info, 3);
 
-  rb_define_module_function (mGPGME, "gpgme_pubkey_algo_name",
-			     rb_s_gpgme_pubkey_algo_name, 1);
-  rb_define_module_function (mGPGME, "gpgme_hash_algo_name",
-			     rb_s_gpgme_hash_algo_name, 1);
+  rb_define_module_function (mGPGME, "gpgme_pubkey_algo_name",      rb_s_gpgme_pubkey_algo_name, 1);
+  rb_define_module_function (mGPGME, "gpgme_hash_algo_name",        rb_s_gpgme_hash_algo_name, 1);
 
-  rb_define_module_function (mGPGME, "gpgme_err_code",
-			     rb_s_gpgme_err_code, 1);
-  rb_define_module_function (mGPGME, "gpgme_err_source",
-			     rb_s_gpgme_err_source, 1);
-  rb_define_module_function (mGPGME, "gpgme_strerror",
-			     rb_s_gpgme_strerror, 1);
+  rb_define_module_function (mGPGME, "gpgme_err_code",              rb_s_gpgme_err_code, 1);
+  rb_define_module_function (mGPGME, "gpgme_err_source",            rb_s_gpgme_err_source, 1);
+  rb_define_module_function (mGPGME, "gpgme_strerror",              rb_s_gpgme_strerror, 1);
 
-  cEngineInfo =
-    rb_define_class_under (mGPGME, "EngineInfo", rb_cObject);
-  cCtx =
-    rb_define_class_under (mGPGME, "Ctx", rb_cObject);
-  cData =
-    rb_define_class_under (mGPGME, "Data", rb_cObject);
-  cKey =
-    rb_define_class_under (mGPGME, "Key", rb_cObject);
-  cSubKey =
-    rb_define_class_under (mGPGME, "SubKey", rb_cObject);
-  cUserID =
-    rb_define_class_under (mGPGME, "UserID", rb_cObject);
-  cKeySig =
-    rb_define_class_under (mGPGME, "KeySig", rb_cObject);
-  cDecryptResult =
-    rb_define_class_under (mGPGME, "DecryptResult", rb_cObject);
-  cVerifyResult =
-    rb_define_class_under (mGPGME, "VerifyResult", rb_cObject);
-  cSignResult =
-    rb_define_class_under (mGPGME, "SignResult", rb_cObject);
-  cEncryptResult =
-    rb_define_class_under (mGPGME, "EncryptResult", rb_cObject);
-  cSignature =
-    rb_define_class_under (mGPGME, "Signature", rb_cObject);
-  cSigNotation =
-    rb_define_class_under (mGPGME, "SigNotation", rb_cObject);
-  cTrustItem =
-    rb_define_class_under (mGPGME, "TrustItem", rb_cObject);
-  cInvalidKey =
-    rb_define_class_under (mGPGME, "InvalidKey", rb_cObject);
-  cNewSignature =
-    rb_define_class_under (mGPGME, "NewSignature", rb_cObject);
-  cImportResult =
-    rb_define_class_under (mGPGME, "ImportResult", rb_cObject);
-  cImportStatus =
-    rb_define_class_under (mGPGME, "ImportStatus", rb_cObject);
+  cEngineInfo     = rb_define_class_under (mGPGME, "EngineInfo", rb_cObject);
+  cCtx            = rb_define_class_under (mGPGME, "Ctx", rb_cObject);
+  cData           = rb_define_class_under (mGPGME, "Data", rb_cObject);
+  cKey            = rb_define_class_under (mGPGME, "Key", rb_cObject);
+  cSubKey         = rb_define_class_under (mGPGME, "SubKey", rb_cObject);
+  cUserID         = rb_define_class_under (mGPGME, "UserID", rb_cObject);
+  cKeySig         = rb_define_class_under (mGPGME, "KeySig", rb_cObject);
+  cDecryptResult  = rb_define_class_under (mGPGME, "DecryptResult", rb_cObject);
+  cVerifyResult   = rb_define_class_under (mGPGME, "VerifyResult", rb_cObject);
+  cSignResult     = rb_define_class_under (mGPGME, "SignResult", rb_cObject);
+  cEncryptResult  = rb_define_class_under (mGPGME, "EncryptResult", rb_cObject);
+  cSignature      = rb_define_class_under (mGPGME, "Signature", rb_cObject);
+  cSigNotation    = rb_define_class_under (mGPGME, "SigNotation", rb_cObject);
+  cTrustItem      = rb_define_class_under (mGPGME, "TrustItem", rb_cObject);
+  cInvalidKey     = rb_define_class_under (mGPGME, "InvalidKey", rb_cObject);
+  cNewSignature   = rb_define_class_under (mGPGME, "NewSignature", rb_cObject);
+  cImportResult   = rb_define_class_under (mGPGME, "ImportResult", rb_cObject);
+  cImportStatus   = rb_define_class_under (mGPGME, "ImportStatus", rb_cObject);
 
   /* Creating Data Buffers
    *
    * gpgme_data_new_from_filepart is not currently supported.
    */
-  rb_define_module_function (mGPGME, "gpgme_data_new",
-			     rb_s_gpgme_data_new, 1);
-  rb_define_module_function (mGPGME, "gpgme_data_new_from_mem",
-			     rb_s_gpgme_data_new_from_mem, 3);
-  rb_define_module_function (mGPGME, "gpgme_data_new_from_fd",
-			     rb_s_gpgme_data_new_from_fd, 2);
-  rb_define_module_function (mGPGME, "gpgme_data_new_from_cbs",
-			     rb_s_gpgme_data_new_from_cbs, 3);
+  rb_define_module_function (mGPGME, "gpgme_data_new",          rb_s_gpgme_data_new, 1);
+  rb_define_module_function (mGPGME, "gpgme_data_new_from_mem", rb_s_gpgme_data_new_from_mem, 3);
+  rb_define_module_function (mGPGME, "gpgme_data_new_from_fd",  rb_s_gpgme_data_new_from_fd, 2);
+  rb_define_module_function (mGPGME, "gpgme_data_new_from_cbs", rb_s_gpgme_data_new_from_cbs, 3);
 
   /* Manipulating Data Buffers */
-  rb_define_module_function (mGPGME, "gpgme_data_read",
-			     rb_s_gpgme_data_read, 2);
-  rb_define_module_function (mGPGME, "gpgme_data_seek",
-			     rb_s_gpgme_data_seek, 3);
-  rb_define_module_function (mGPGME, "gpgme_data_write",
-			     rb_s_gpgme_data_write, 3);
-  rb_define_module_function (mGPGME, "gpgme_data_get_encoding",
-			     rb_s_gpgme_data_get_encoding, 1);
-  rb_define_module_function (mGPGME, "gpgme_data_set_encoding",
-			     rb_s_gpgme_data_set_encoding, 2);
+  rb_define_module_function (mGPGME, "gpgme_data_read",         rb_s_gpgme_data_read, 2);
+  rb_define_module_function (mGPGME, "gpgme_data_seek",         rb_s_gpgme_data_seek, 3);
+  rb_define_module_function (mGPGME, "gpgme_data_write",        rb_s_gpgme_data_write, 3);
+  rb_define_module_function (mGPGME, "gpgme_data_get_encoding", rb_s_gpgme_data_get_encoding, 1);
+  rb_define_module_function (mGPGME, "gpgme_data_set_encoding", rb_s_gpgme_data_set_encoding, 2);
 
   /* Creating Contexts */
-  rb_define_module_function (mGPGME, "gpgme_new",
-			     rb_s_gpgme_new, 1);
-  rb_define_module_function (mGPGME, "gpgme_release",
-			     rb_s_gpgme_release, 1);
+  rb_define_module_function (mGPGME, "gpgme_new",     rb_s_gpgme_new, 1);
+  rb_define_module_function (mGPGME, "gpgme_release", rb_s_gpgme_release, 1);
 
   /* Context Attributes */
-  rb_define_module_function (mGPGME, "gpgme_set_protocol",
-			     rb_s_gpgme_set_protocol, 2);
-  rb_define_module_function (mGPGME, "gpgme_get_protocol",
-			     rb_s_gpgme_get_protocol, 1);
-  rb_define_module_function (mGPGME, "gpgme_set_armor",
-			     rb_s_gpgme_set_armor, 2);
-  rb_define_module_function (mGPGME, "gpgme_get_armor",
-			     rb_s_gpgme_get_armor, 1);
-  rb_define_module_function (mGPGME, "gpgme_set_textmode",
-			     rb_s_gpgme_set_textmode, 2);
-  rb_define_module_function (mGPGME, "gpgme_get_textmode",
-			     rb_s_gpgme_get_textmode, 1);
-  rb_define_module_function (mGPGME, "gpgme_set_include_certs",
-			     rb_s_gpgme_set_include_certs, 2);
-  rb_define_module_function (mGPGME, "gpgme_get_include_certs",
-			     rb_s_gpgme_get_include_certs, 1);
-  rb_define_module_function (mGPGME, "gpgme_set_keylist_mode",
-			     rb_s_gpgme_set_keylist_mode, 2);
-  rb_define_module_function (mGPGME, "gpgme_get_keylist_mode",
-			     rb_s_gpgme_get_keylist_mode, 1);
-  rb_define_module_function (mGPGME, "gpgme_set_passphrase_cb",
-			     rb_s_gpgme_set_passphrase_cb, 3);
-  rb_define_module_function (mGPGME, "gpgme_get_passphrase_cb",
-			     rb_s_gpgme_get_passphrase_cb, 3);
-  rb_define_module_function (mGPGME, "gpgme_set_progress_cb",
-			     rb_s_gpgme_set_progress_cb, 3);
-  rb_define_module_function (mGPGME, "gpgme_get_progress_cb",
-			     rb_s_gpgme_get_progress_cb, 3);
-  rb_define_module_function (mGPGME, "gpgme_set_locale",
-			     rb_s_gpgme_set_locale, 3);
+  rb_define_module_function (mGPGME, "gpgme_set_protocol",      rb_s_gpgme_set_protocol, 2);
+  rb_define_module_function (mGPGME, "gpgme_get_protocol",      rb_s_gpgme_get_protocol, 1);
+  rb_define_module_function (mGPGME, "gpgme_set_armor",         rb_s_gpgme_set_armor, 2);
+  rb_define_module_function (mGPGME, "gpgme_get_armor",         rb_s_gpgme_get_armor, 1);
+  rb_define_module_function (mGPGME, "gpgme_set_textmode",      rb_s_gpgme_set_textmode, 2);
+  rb_define_module_function (mGPGME, "gpgme_get_textmode",      rb_s_gpgme_get_textmode, 1);
+  rb_define_module_function (mGPGME, "gpgme_set_include_certs", rb_s_gpgme_set_include_certs, 2);
+  rb_define_module_function (mGPGME, "gpgme_get_include_certs", rb_s_gpgme_get_include_certs, 1);
+  rb_define_module_function (mGPGME, "gpgme_set_keylist_mode",  rb_s_gpgme_set_keylist_mode, 2);
+  rb_define_module_function (mGPGME, "gpgme_get_keylist_mode",  rb_s_gpgme_get_keylist_mode, 1);
+  rb_define_module_function (mGPGME, "gpgme_set_passphrase_cb", rb_s_gpgme_set_passphrase_cb, 3);
+  rb_define_module_function (mGPGME, "gpgme_get_passphrase_cb", rb_s_gpgme_get_passphrase_cb, 3);
+  rb_define_module_function (mGPGME, "gpgme_set_progress_cb",   rb_s_gpgme_set_progress_cb, 3);
+  rb_define_module_function (mGPGME, "gpgme_get_progress_cb",   rb_s_gpgme_get_progress_cb, 3);
+  rb_define_module_function (mGPGME, "gpgme_set_locale",        rb_s_gpgme_set_locale, 3);
 
   /* Key Management */
-  rb_define_module_function (mGPGME, "gpgme_op_keylist_start",
-			     rb_s_gpgme_op_keylist_start, 3);
-  rb_define_module_function (mGPGME, "gpgme_op_keylist_ext_start",
-			     rb_s_gpgme_op_keylist_ext_start, 4);
-  rb_define_module_function (mGPGME, "gpgme_op_keylist_next",
-			     rb_s_gpgme_op_keylist_next, 2);
-  rb_define_module_function (mGPGME, "gpgme_op_keylist_end",
-			     rb_s_gpgme_op_keylist_end, 1);
-  rb_define_module_function (mGPGME, "gpgme_get_key",
-			     rb_s_gpgme_get_key, 4);
-  rb_define_module_function (mGPGME, "gpgme_op_genkey",
-			     rb_s_gpgme_op_genkey, 4);
-  rb_define_module_function (mGPGME, "gpgme_op_genkey_start",
-			     rb_s_gpgme_op_genkey_start, 4);
-  rb_define_module_function (mGPGME, "gpgme_op_export",
-			     rb_s_gpgme_op_export, 4);
-  rb_define_module_function (mGPGME, "gpgme_op_export_start",
-			     rb_s_gpgme_op_export_start, 4);
-  rb_define_module_function (mGPGME, "gpgme_op_export_ext",
-			     rb_s_gpgme_op_export_ext, 4);
-  rb_define_module_function (mGPGME, "gpgme_op_export_ext_start",
-			     rb_s_gpgme_op_export_ext_start, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_keylist_start",      rb_s_gpgme_op_keylist_start, 3);
+  rb_define_module_function (mGPGME, "gpgme_op_keylist_ext_start",  rb_s_gpgme_op_keylist_ext_start, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_keylist_next",       rb_s_gpgme_op_keylist_next, 2);
+  rb_define_module_function (mGPGME, "gpgme_op_keylist_end",        rb_s_gpgme_op_keylist_end, 1);
+  rb_define_module_function (mGPGME, "gpgme_get_key",               rb_s_gpgme_get_key, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_genkey",             rb_s_gpgme_op_genkey, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_genkey_start",       rb_s_gpgme_op_genkey_start, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_export",             rb_s_gpgme_op_export, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_export_start",       rb_s_gpgme_op_export_start, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_export_ext",         rb_s_gpgme_op_export_ext, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_export_ext_start",   rb_s_gpgme_op_export_ext_start, 4);
+
 #ifdef HAVE_GPGME_OP_EXPORT_KEYS
-  rb_define_module_function (mGPGME, "gpgme_op_export_keys",
-			     rb_s_gpgme_op_export_keys, 4);
-  rb_define_module_function (mGPGME, "gpgme_op_export_keys_start",
-			     rb_s_gpgme_op_export_keys_start, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_export_keys",        rb_s_gpgme_op_export_keys, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_export_keys_start",  rb_s_gpgme_op_export_keys_start, 4);
 #endif
-  rb_define_module_function (mGPGME, "gpgme_op_import",
-			     rb_s_gpgme_op_import, 2);
-  rb_define_module_function (mGPGME, "gpgme_op_import_start",
-			     rb_s_gpgme_op_import_start, 2);
+  rb_define_module_function (mGPGME, "gpgme_op_import",       rb_s_gpgme_op_import, 2);
+  rb_define_module_function (mGPGME, "gpgme_op_import_start", rb_s_gpgme_op_import_start, 2);
 #ifdef HAVE_GPGME_OP_EXPORT_KEYS
-  rb_define_module_function (mGPGME, "gpgme_op_import_keys",
-			     rb_s_gpgme_op_import_keys, 2);
-  rb_define_module_function (mGPGME, "gpgme_op_import_keys_start",
-			     rb_s_gpgme_op_import_keys_start, 2);
+  rb_define_module_function (mGPGME, "gpgme_op_import_keys",        rb_s_gpgme_op_import_keys, 2);
+  rb_define_module_function (mGPGME, "gpgme_op_import_keys_start",  rb_s_gpgme_op_import_keys_start, 2);
 #endif
-  rb_define_module_function (mGPGME, "gpgme_op_import_result",
-			     rb_s_gpgme_op_import_result, 1);
-  rb_define_module_function (mGPGME, "gpgme_op_delete",
-			     rb_s_gpgme_op_delete, 3);
-  rb_define_module_function (mGPGME, "gpgme_op_delete_start",
-			     rb_s_gpgme_op_delete_start, 3);
-  rb_define_module_function (mGPGME, "gpgme_op_edit",
-			     rb_s_gpgme_op_edit, 5);
-  rb_define_module_function (mGPGME, "gpgme_op_edit_start",
-			     rb_s_gpgme_op_edit_start, 5);
-  rb_define_module_function (mGPGME, "gpgme_op_card_edit",
-			     rb_s_gpgme_op_card_edit, 5);
-  rb_define_module_function (mGPGME, "gpgme_op_card_edit_start",
-			     rb_s_gpgme_op_card_edit_start, 5);
+  rb_define_module_function (mGPGME, "gpgme_op_import_result",    rb_s_gpgme_op_import_result, 1);
+  rb_define_module_function (mGPGME, "gpgme_op_delete",           rb_s_gpgme_op_delete, 3);
+  rb_define_module_function (mGPGME, "gpgme_op_delete_start",     rb_s_gpgme_op_delete_start, 3);
+  rb_define_module_function (mGPGME, "gpgme_op_edit",             rb_s_gpgme_op_edit, 5);
+  rb_define_module_function (mGPGME, "gpgme_op_edit_start",       rb_s_gpgme_op_edit_start, 5);
+  rb_define_module_function (mGPGME, "gpgme_op_card_edit",        rb_s_gpgme_op_card_edit, 5);
+  rb_define_module_function (mGPGME, "gpgme_op_card_edit_start",  rb_s_gpgme_op_card_edit_start, 5);
 
   /* Trust Item Management */
-  rb_define_module_function (mGPGME, "gpgme_op_trustlist_start",
-			     rb_s_gpgme_op_trustlist_start, 3);
-  rb_define_module_function (mGPGME, "gpgme_op_trustlist_next",
-			     rb_s_gpgme_op_trustlist_next, 2);
-  rb_define_module_function (mGPGME, "gpgme_op_trustlist_end",
-			     rb_s_gpgme_op_trustlist_end, 1);
+  rb_define_module_function (mGPGME, "gpgme_op_trustlist_start",  rb_s_gpgme_op_trustlist_start, 3);
+  rb_define_module_function (mGPGME, "gpgme_op_trustlist_next",   rb_s_gpgme_op_trustlist_next, 2);
+  rb_define_module_function (mGPGME, "gpgme_op_trustlist_end",    rb_s_gpgme_op_trustlist_end, 1);
 
   /* Decrypt */
-  rb_define_module_function (mGPGME, "gpgme_op_decrypt",
-			     rb_s_gpgme_op_decrypt, 3);
-  rb_define_module_function (mGPGME, "gpgme_op_decrypt_start",
-			     rb_s_gpgme_op_decrypt_start, 3);
-  rb_define_module_function (mGPGME, "gpgme_op_decrypt_result",
-			     rb_s_gpgme_op_decrypt_result, 1);
+  rb_define_module_function (mGPGME, "gpgme_op_decrypt",        rb_s_gpgme_op_decrypt, 3);
+  rb_define_module_function (mGPGME, "gpgme_op_decrypt_start",  rb_s_gpgme_op_decrypt_start, 3);
+  rb_define_module_function (mGPGME, "gpgme_op_decrypt_result", rb_s_gpgme_op_decrypt_result, 1);
 
   /* Verify */
-  rb_define_module_function (mGPGME, "gpgme_op_verify",
-			     rb_s_gpgme_op_verify, 4);
-  rb_define_module_function (mGPGME, "gpgme_op_verify_start",
-			     rb_s_gpgme_op_verify_start, 4);
-  rb_define_module_function (mGPGME, "gpgme_op_verify_result",
-			     rb_s_gpgme_op_verify_result, 1);
+  rb_define_module_function (mGPGME, "gpgme_op_verify",         rb_s_gpgme_op_verify, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_verify_start",   rb_s_gpgme_op_verify_start, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_verify_result",  rb_s_gpgme_op_verify_result, 1);
 
   /* Decrypt and Verify */
-  rb_define_module_function (mGPGME, "gpgme_op_decrypt_verify",
-			     rb_s_gpgme_op_decrypt_verify, 3);
-  rb_define_module_function (mGPGME, "gpgme_op_decrypt_verify_start",
-			     rb_s_gpgme_op_decrypt_verify_start, 3);
+  rb_define_module_function (mGPGME, "gpgme_op_decrypt_verify",       rb_s_gpgme_op_decrypt_verify, 3);
+  rb_define_module_function (mGPGME, "gpgme_op_decrypt_verify_start", rb_s_gpgme_op_decrypt_verify_start, 3);
 
   /* Sign */
-  rb_define_module_function (mGPGME, "gpgme_signers_clear",
-			     rb_s_gpgme_signers_clear, 1);
-  rb_define_module_function (mGPGME, "gpgme_signers_add",
-			     rb_s_gpgme_signers_add, 2);
-  rb_define_module_function (mGPGME, "gpgme_signers_enum",
-			     rb_s_gpgme_signers_enum, 2);
-  rb_define_module_function (mGPGME, "gpgme_op_sign",
-			     rb_s_gpgme_op_sign, 4);
-  rb_define_module_function (mGPGME, "gpgme_op_sign_start",
-			     rb_s_gpgme_op_sign_start, 4);
-  rb_define_module_function (mGPGME, "gpgme_op_sign_result",
-			     rb_s_gpgme_op_sign_result, 1);
+  rb_define_module_function (mGPGME, "gpgme_signers_clear",   rb_s_gpgme_signers_clear, 1);
+  rb_define_module_function (mGPGME, "gpgme_signers_add",     rb_s_gpgme_signers_add, 2);
+  rb_define_module_function (mGPGME, "gpgme_signers_enum",    rb_s_gpgme_signers_enum, 2);
+  rb_define_module_function (mGPGME, "gpgme_op_sign",         rb_s_gpgme_op_sign, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_sign_start",   rb_s_gpgme_op_sign_start, 4);
+  rb_define_module_function (mGPGME, "gpgme_op_sign_result",  rb_s_gpgme_op_sign_result, 1);
 
   /* Encrypt */
-  rb_define_module_function (mGPGME, "gpgme_op_encrypt",
-			     rb_s_gpgme_op_encrypt, 5);
-  rb_define_module_function (mGPGME, "gpgme_op_encrypt_start",
-			     rb_s_gpgme_op_encrypt_start, 5);
-  rb_define_module_function (mGPGME, "gpgme_op_encrypt_result",
-			     rb_s_gpgme_op_encrypt_result, 1);
-  rb_define_module_function (mGPGME, "gpgme_op_encrypt_sign",
-			     rb_s_gpgme_op_encrypt_sign, 5);
-  rb_define_module_function (mGPGME, "gpgme_op_encrypt_sign_start",
-			     rb_s_gpgme_op_encrypt_sign_start, 5);
+  rb_define_module_function (mGPGME, "gpgme_op_encrypt",            rb_s_gpgme_op_encrypt, 5);
+  rb_define_module_function (mGPGME, "gpgme_op_encrypt_start",      rb_s_gpgme_op_encrypt_start, 5);
+  rb_define_module_function (mGPGME, "gpgme_op_encrypt_result",     rb_s_gpgme_op_encrypt_result, 1);
+  rb_define_module_function (mGPGME, "gpgme_op_encrypt_sign",       rb_s_gpgme_op_encrypt_sign, 5);
+  rb_define_module_function (mGPGME, "gpgme_op_encrypt_sign_start", rb_s_gpgme_op_encrypt_sign_start, 5);
 
   /* Run Control */
-  rb_define_module_function (mGPGME, "gpgme_wait",
-			     rb_s_gpgme_wait, 3);
+  rb_define_module_function (mGPGME, "gpgme_wait", rb_s_gpgme_wait, 3);
 
   /* gpgme_pubkey_algo_t */
   rb_define_const (mGPGME, "GPGME_PK_RSA", INT2FIX(GPGME_PK_RSA));
