@@ -2,12 +2,12 @@ module GPGME
   module WrapperFunctions
 
     # @param [Array] rinfo An empty array where the info elements will be stored
-    # @return [Array<EngineInfo>]
+    # @return [Array<EngineInfo>, Symbol] An error Symbol will be returned if an error occured. Engine Info(s) otherwise.
     def gpgme_get_engine_info(rinfo=[])
       info  = GpgmeEngineInfo.new
       error = gpgme_get_engine_info__(info)
 
-      return error unless Err_Code_T[error] == :GPG_ERR_NO_ERROR
+      return Err_Code_T[error] unless Err_Code_T[error] == :GPG_ERR_NO_ERROR
 
       while info
         rinfo << engine_info_from_info(info)
