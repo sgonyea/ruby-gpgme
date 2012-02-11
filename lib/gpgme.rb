@@ -4,7 +4,8 @@ require 'gpgme/ffi'
 require 'gpgme_n'
 
 # TODO without this call one can't GPGME::Ctx.new, find out why
-GPGME::gpgme_check_version(nil)
+GPGME::gpgme_check_version_x(nil)
+GPGME::gpgme_check_version(nil)   # @todo: Remove above line. Call both for now.
 
 require 'gpgme/constants'
 require 'gpgme/ctx'
