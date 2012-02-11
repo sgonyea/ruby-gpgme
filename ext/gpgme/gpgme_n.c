@@ -138,18 +138,6 @@ rb_s_gpgme_check_version (VALUE dummy, VALUE vreq)
 }
 
 static VALUE
-rb_s_gpgme_set_engine_info (VALUE dummy, VALUE vproto, VALUE vfile_name,
-			    VALUE vhome_dir)
-{
-  gpgme_error_t err = gpgme_set_engine_info (NUM2INT(vproto),
-					     NIL_P(vfile_name) ? NULL :
-					     StringValueCStr(vfile_name),
-					     NIL_P(vhome_dir) ? NULL :
-					     StringValueCStr(vhome_dir));
-  return LONG2NUM(err);
-}
-
-static VALUE
 rb_s_gpgme_pubkey_algo_name (VALUE dummy, VALUE valgo)
 {
   const char *name = gpgme_pubkey_algo_name (NUM2INT(valgo));
@@ -1898,7 +1886,6 @@ Init_gpgme_n (void)
   mGPGME = rb_define_module ("GPGME");
 
   rb_define_module_function (mGPGME, "gpgme_check_version_x",       rb_s_gpgme_check_version, 1);
-  rb_define_module_function (mGPGME, "gpgme_set_engine_info",       rb_s_gpgme_set_engine_info, 3);
 
   rb_define_module_function (mGPGME, "gpgme_pubkey_algo_name",      rb_s_gpgme_pubkey_algo_name, 1);
   rb_define_module_function (mGPGME, "gpgme_hash_algo_name",        rb_s_gpgme_hash_algo_name, 1);

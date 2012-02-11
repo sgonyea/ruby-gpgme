@@ -12,4 +12,5 @@ module GPGME
   attach_function :gpgme_check_version,         :gpgme_check_version,         [:pointer], :string
   attach_function :gpgme_engine_check_version,  :gpgme_engine_check_version,  [:gpgme_protocol_t], :long
   attach_function :gpgme_get_engine_info__,     :gpgme_get_engine_info,       [GpgmeEngineInfo], :uint
+  attach_function :gpgme_set_engine_info,       :gpgme_set_engine_info,       [:gpgme_protocol_t, :string, :string], :uint
 end
