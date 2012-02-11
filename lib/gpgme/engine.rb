@@ -33,9 +33,7 @@ module GPGME
       #          @version="1.4.11">
       #
       def info
-        rinfo = []
-        GPGME::gpgme_get_engine_info(rinfo)
-        rinfo
+        GPGME::gpgme_get_engine_info
       end
 
       ##
