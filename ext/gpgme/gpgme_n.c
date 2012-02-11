@@ -128,20 +128,20 @@ static VALUE cEngineInfo,
   cImportStatus,
   cImportResult;
 
-static VALUE
-rb_s_gpgme_check_version (VALUE dummy, VALUE vreq)
-{
-  const char *result = gpgme_check_version (NIL_P(vreq) ? NULL :
-					    StringValueCStr(vreq));
-  return result ? rb_str_new2 (result) : Qnil;
-}
+// static VALUE
+// rb_s_gpgme_check_version (VALUE dummy, VALUE vreq)
+// {
+//   const char *result = gpgme_check_version (NIL_P(vreq) ? NULL :
+//              StringValueCStr(vreq));
+//   return result ? rb_str_new2 (result) : Qnil;
+// }
 
-static VALUE
-rb_s_gpgme_engine_check_version (VALUE dummy, VALUE vproto)
-{
-  gpgme_error_t err = gpgme_engine_check_version (NUM2INT(vproto));
-  return LONG2NUM(err);
-}
+// static VALUE
+// rb_s_gpgme_engine_check_version (VALUE dummy, VALUE vproto)
+// {
+//   gpgme_error_t err = gpgme_engine_check_version (NUM2INT(vproto));
+//   return LONG2NUM(err);
+// }
 
 static VALUE
 rb_s_gpgme_get_engine_info (VALUE dummy, VALUE rinfo)
@@ -1931,8 +1931,8 @@ Init_gpgme_n (void)
 
   mGPGME = rb_define_module ("GPGME");
 
-  rb_define_module_function (mGPGME, "gpgme_check_version",         rb_s_gpgme_check_version, 1);
-  rb_define_module_function (mGPGME, "gpgme_engine_check_version",  rb_s_gpgme_engine_check_version, 1);
+  // rb_define_module_function (mGPGME, "gpgme_check_version",         rb_s_gpgme_check_version, 1);
+  // rb_define_module_function (mGPGME, "gpgme_engine_check_version",  rb_s_gpgme_engine_check_version, 1);
   rb_define_module_function (mGPGME, "gpgme_get_engine_info",       rb_s_gpgme_get_engine_info, 1);
   rb_define_module_function (mGPGME, "gpgme_set_engine_info",       rb_s_gpgme_set_engine_info, 3);
 
