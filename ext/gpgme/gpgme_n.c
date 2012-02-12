@@ -138,12 +138,6 @@ rb_s_gpgme_check_version (VALUE dummy, VALUE vreq)
 }
 
 static VALUE
-rb_s_gpgme_err_code (VALUE dummy, VALUE verr)
-{
-  return INT2FIX(gpgme_err_code (NUM2LONG(verr)));
-}
-
-static VALUE
 rb_s_gpgme_err_source (VALUE dummy, VALUE verr)
 {
   return INT2FIX(gpgme_err_source (NUM2LONG(verr)));
@@ -1869,7 +1863,6 @@ Init_gpgme_n (void)
 
   rb_define_module_function (mGPGME, "gpgme_check_version_x",       rb_s_gpgme_check_version, 1);
 
-  rb_define_module_function (mGPGME, "gpgme_err_code",              rb_s_gpgme_err_code, 1);
   rb_define_module_function (mGPGME, "gpgme_err_source",            rb_s_gpgme_err_source, 1);
   rb_define_module_function (mGPGME, "gpgme_strerror",              rb_s_gpgme_strerror, 1);
 

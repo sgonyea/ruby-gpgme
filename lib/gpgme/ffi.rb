@@ -15,4 +15,11 @@ module GPGME
   attach_function :gpgme_set_engine_info,       :gpgme_set_engine_info,       [:gpgme_protocol_t, :string, :string], :uint
   attach_function :gpgme_pubkey_algo_name,      :gpgme_pubkey_algo_name,      [:gpgme_pubkey_algo_t], :string
   attach_function :gpgme_hash_algo_name,        :gpgme_hash_algo_name,        [:gpgme_hash_algo_t], :string
+  # attach_function :gpgme_err_code,              :gpgme_err_code,              [:uint], :gpgme_err_code_t # uint = gpgme_error_t
+
+  GPG_ERR_CODE_MASK = GPG_ERR_CODE_DIM - 1
+  def self.gpgme_err_code(err_code)
+    err_code & GPG_ERR_CODE_MASK
+  end
+
 end
