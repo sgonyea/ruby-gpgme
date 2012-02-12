@@ -138,15 +138,6 @@ rb_s_gpgme_check_version (VALUE dummy, VALUE vreq)
 }
 
 static VALUE
-rb_s_gpgme_hash_algo_name (VALUE dummy, VALUE valgo)
-{
-  const char *name = gpgme_hash_algo_name (NUM2INT(valgo));
-  if (name)
-    return rb_str_new2 (name);
-  return Qnil;
-}
-
-static VALUE
 rb_s_gpgme_err_code (VALUE dummy, VALUE verr)
 {
   return INT2FIX(gpgme_err_code (NUM2LONG(verr)));
@@ -1877,8 +1868,6 @@ Init_gpgme_n (void)
   mGPGME = rb_define_module ("GPGME");
 
   rb_define_module_function (mGPGME, "gpgme_check_version_x",       rb_s_gpgme_check_version, 1);
-
-  rb_define_module_function (mGPGME, "gpgme_hash_algo_name",        rb_s_gpgme_hash_algo_name, 1);
 
   rb_define_module_function (mGPGME, "gpgme_err_code",              rb_s_gpgme_err_code, 1);
   rb_define_module_function (mGPGME, "gpgme_err_source",            rb_s_gpgme_err_source, 1);
