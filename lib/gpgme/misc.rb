@@ -1,7 +1,5 @@
 module GPGME
   class EngineInfo
-    # private_class_method :new
-
     attr_accessor :protocol, :file_name, :version, :req_version, :home_dir
     alias required_version req_version
   end

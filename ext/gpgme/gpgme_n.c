@@ -109,24 +109,24 @@
 #define UNWRAP_GPGME_TRUST_ITEM(vitem, item)			\
   Data_Get_Struct(vitem, struct _gpgme_trust_item, item)
 
-static VALUE cEngineInfo,
-  cCtx,
-  cData,
-  cKey,
-  cSubKey,
-  cUserID,
-  cKeySig,
-  cInvalidKey,
-  cNewSignature,
-  cSignature,
-  cSigNotation,
-  cTrustItem,
-  cDecryptResult,
-  cVerifyResult,
-  cSignResult,
-  cEncryptResult,
-  cImportStatus,
-  cImportResult;
+static VALUE  cEngineInfo,
+              cCtx,
+              cData,
+              cKey,
+              cSubKey,
+              cUserID,
+              cKeySig,
+              cInvalidKey,
+              cNewSignature,
+              cSignature,
+              cSigNotation,
+              cTrustItem,
+              cDecryptResult,
+              cVerifyResult,
+              cSignResult,
+              cEncryptResult,
+              cImportStatus,
+              cImportResult;
 
 // @TODO: Remove. This is only in place so the rest of the tests pass.
 static VALUE

@@ -21,4 +21,13 @@ module GPGME
     err_code & GPG_ERR_CODE_MASK
   end
 
+  # Decrypt
+
+  # Verify
+
+  # Decrypt and Verify
+
+  # Sign
+
+  # Encrypt
 end
